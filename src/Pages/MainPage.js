@@ -21,7 +21,7 @@ function MainPage() {
                                     Penyedia mobil rental di Malang Raya
                                 </p>
                                 <a
-                                    href="#"
+                                    href="#mobil"
                                     className="inline-block lg:text-2xl text-sm px-4 py-2 font-semibold border rounded-lg text-white bg-[#480869] border-[#480869] hover:border-[#480869] hover:text-[#480869] hover:bg-transparent mt-4 lg:mt-0"
                                 >
                                     CARI MOBIL

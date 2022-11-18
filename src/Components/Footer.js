@@ -2,11 +2,20 @@ import logoFacebook from "../image/footer/facebook.png";
 import logoIg from "../image/footer/ig.png";
 import logoTwitter from "../image/footer/twitter.png";
 
-// const logo = [
-//     (logoFacebook = "../image/footer/ig.png"),
-//     (logoIg = "../image/footer/ig.png"),
-//     (logoTwitter = "../image/footer/twitter.png"),
-// ];
+const medsoslogo = [
+    {
+        logo: logoFacebook,
+        link: "",
+    },
+    {
+        logo: logoIg,
+        link: "https://instagram.com/malang_rent",
+    },
+    {
+        logo: logoTwitter,
+        link: "",
+    },
+];
 
 export default function Footer() {
     return (
@@ -14,15 +23,19 @@ export default function Footer() {
             <h1 className="font-black text-4xl text-center">MALANG RENT</h1>
             <p className="mt-10">Penyedia Rental Mobil di Malang Raya</p>
             <div className="mx-auto mt-5 flex flex-row">
-                <div className="bg-[#EE7A31] w-12 h-12 mx-2 rounded-lg flex">
-                    <img className="p-3 mx-auto" src={logoFacebook} alt="" />
-                </div>
-                <div className="bg-[#EE7A31] w-12 h-12 mx-2 rounded-lg flex">
-                    <img className="p-3 mx-auto" src={logoIg} alt="" />
-                </div>
-                <div className="bg-[#EE7A31] w-12 h-12 mx-2 rounded-lg flex">
-                    <img className="p-3 mx-auto" src={logoTwitter} alt="" />
-                </div>
+                {medsoslogo.map((data, index) => (
+                    <div key={index}>
+                        <a href={data.link}>
+                            <div className="bg-[#EE7A31] w-12 h-12 mx-2 rounded-lg flex">
+                                <img
+                                    className="p-3 mx-auto"
+                                    src={data.logo}
+                                    alt=""
+                                />
+                            </div>
+                        </a>
+                    </div>
+                ))}
             </div>
         </div>
     );

@@ -12,27 +12,32 @@ const listMobil = [
     {
         nama: "Alphard",
         stok: "2",
+        harga: "450000",
         foto: alphard,
     },
     {
         nama: "Avanza",
         stok: "6",
+        harga: "350000",
         foto: avanza,
     },
     {
         nama: "Fortuner",
         stok: "3",
+        harga: "400000",
         foto: fortuner,
     },
     {
         nama: "Pajero",
         stok: "1",
+        harga: "450000",
         foto: pajero,
     },
 
     {
         nama: "Range Rover",
         stok: "2",
+        harga: "600000",
         foto: rangerover,
     },
 ];
@@ -59,11 +64,13 @@ export default function Mobil() {
                 {listMobil.map((data, index) => (
                     <SwiperSlide>
                         <div key={index}>
-                            <MobilCard
-                                nama={data.nama}
-                                stok={data.stok}
-                                foto={data.foto}
-                            ></MobilCard>
+                            <a href="/detailmobil">
+                                <MobilCard
+                                    nama={data.nama}
+                                    stok={data.stok}
+                                    foto={data.foto}
+                                ></MobilCard>
+                            </a>
                         </div>
                     </SwiperSlide>
                 ))}
