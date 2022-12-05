@@ -1,9 +1,54 @@
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useHistory } from "react-router-dom";
+import { auth, db, logout } from "../firebase.js";
+import { query, collection, getDocs, where } from "firebase/firestore";
+
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Mobil from "./Mobil";
 import car from "../image/car.png";
 
 function MainPage() {
+    // const [user, loading, error] = useAuthState(auth);
+    // const [name, setName] = useState("");
+    // const [carLists, setCarLists] = useState([]);
+    // const navigate = useHistory();
+    // const fetchUserName = async () => {
+    //     try {
+    //         const q = query(
+    //             collection(db, "users"),
+    //             where("uid", "==", user?.uid)
+    //         );
+    //         const doc = await getDocs(q);
+    //         const data = doc.docs[0].data();
+    //         setName(data.name);
+    //     } catch (err) {
+    //         console.error(err);
+    //         alert("An error occured while fetching user data");
+    //     }
+    // };
+
+    // const getCars = async () => {
+    //     const cars = collection(db, "cars");
+    //     const carSnapshot = await getDocs(cars);
+    //     const carList = carSnapshot.docs.map((doc) => doc.data());
+    //     // const carList = carSnapshot.docs[1].data();
+    //     setCarLists(carList);
+    //     // console.log(carLists);
+    //     // return carList;
+    // };
+    // useEffect(() => {
+    //     if (loading) return;
+    //     if (!user) return navigate.push("/");
+    //     fetchUserName();
+    // }, [user, loading]);
+
+    // useEffect(() => {
+    //     getCars();
+    //     // console.log(carLists);
+    // });
+
     return (
         <div>
             <title>Malang Rent</title>
@@ -18,7 +63,8 @@ function MainPage() {
                                 <h1 className="lg:mt-2 bg-[#F1A93D]">MOBIL</h1>
                                 <h1 className="lg:mt-2">MALANG</h1>
                                 <p className="font-normal text-lg mt-2">
-                                    Penyedia mobil rental di Malang Raya
+                                    Pilih mobil terbaik, untuk liburanmu yang
+                                    apik !
                                 </p>
                                 <a
                                     href="#mobil"
@@ -34,8 +80,8 @@ function MainPage() {
                     </div>
                 </div>
                 <div className="mx-auto container my-20 w-100 h-auto bg-[#F1A93D]">
-                    <h1 className="font-black lg:text-4xl text-2xl p-6">
-                        #malangrent
+                    <h1 className="font-black lg:text-4xl text-xl p-6">
+                        #sewamobillebihmudah
                     </h1>
                 </div>
             </div>

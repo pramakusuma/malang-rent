@@ -1,8 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useHistory } from "react-router-dom";
+import { auth, db, logout } from "../firebase.js";
+import { query, collection, getDocs, where } from "firebase/firestore";
+
 import logo from "../image/logo.png";
 
 export default function Navbar({ fixed }) {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+    const [user, loading, error] = useAuthState(auth);
+    const [name, setName] = useState("");
+    const navigate = useHistory();
+    const fetchUserName = async () => {
+        try {
+            const q = query(
+                collection(db, "users"),
+                where("uid", "==", user?.uid)
+            );
+            const doc = await getDocs(q);
+            const data = doc.docs[0].data();
+            setName(data.name);
+        } catch (err) {
+            console.error(err);
+            alert("An error occured while fetching user data");
+        }
+    };
+    useEffect(() => {
+        if (loading) return;
+        // if (!user) return navigate.push("/");
+        fetchUserName();
+    }, [user, loading]);
+
+    // let profileButton;
+
+    // if (user) {
+    //     profileButton = (
+    //         <div>
+    //             <a
+    //                 href="/profile"
+    //                 className="inline-block font-black text-sm px-4 py-2 leading-none border rounded text-white bg-[#480869] border-[#480869] hover:border-[#480869] hover:text-[#480869] hover:bg-transparent mt-4 lg:mt-0 lg:ml-10"
+    //             >
+    //                 {name}
+    //             </a>
+    //         </div>
+    //     );
+    // } else {
+    //     profileButton = (
+    //         <div>
+    //             <a
+    //                 href="/login"
+    //                 className="inline-block font-black text-sm px-4 py-2 leading-none border rounded text-white bg-[#480869] border-[#480869] hover:border-[#480869] hover:text-[#480869] hover:bg-transparent mt-4 lg:mt-0 lg:ml-10"
+    //             >
+    //                 LOGIN
+    //             </a>
+    //         </div>
+    //     );
+    // }
     return (
         <>
             <nav className="flex items-center justify-between w-full flex-wrap bg-white lg:px-20 px-10 fixed inset-x-0 z-50 top-0">
@@ -34,37 +88,51 @@ export default function Navbar({ fixed }) {
                 <div
                     className={
                         "lg:flex flex-grow items-center lg:flex-row lg:w-auto lg:justify-end" +
-                        (navbarOpen ? " flex w-full flex-col" : " hidden")
+                        (navbarOpen ? " flex w-full flex-col p-8" : " hidden")
                     }
                 >
                     <div className="text-lg font-black lg:flex lg:flex-grow lg:justify-end">
                         <a
                             href="#mobil"
-                            className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black lg:mr-4"
+                            className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black lg:mr-6"
                         >
                             MOBIL
                         </a>
                         <a
-                            href="#riwayat"
-                            className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black lg:mr-4"
+                            href="/riwayat"
+                            className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black lg:mr-0"
                         >
                             RIWAYAT
                         </a>
-                        <a
+                        {/* <a
                             href="/profile"
                             className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black"
                         >
                             PROFIL
-                        </a>
+                        </a> */}
                     </div>
-                    <div>
-                        <a
-                            href="/login"
-                            className="inline-block font-black text-sm px-4 py-2 leading-none border rounded text-white bg-[#480869] border-[#480869] hover:border-[#480869] hover:text-[#480869] hover:bg-transparent mt-4 lg:mt-0 lg:ml-10"
-                        >
-                            LOGIN
-                        </a>
-                    </div>
+                    {/* <div> {profileButton}</div> */}
+
+                    {user && (
+                        <div>
+                            <a
+                                href="/profile"
+                                className="inline-block font-black text-sm px-4 py-2 leading-none border rounded text-white bg-[#480869] border-[#480869] hover:border-[#480869] hover:text-[#480869] hover:bg-transparent mt-4 lg:mt-0 lg:ml-10"
+                            >
+                                {name}
+                            </a>
+                        </div>
+                    )}
+                    {!user && (
+                        <div>
+                            <a
+                                href="/login"
+                                className="inline-block font-black text-sm px-4 py-2 leading-none border rounded text-white bg-[#480869] border-[#480869] hover:border-[#480869] hover:text-[#480869] hover:bg-transparent mt-4 lg:mt-0 lg:ml-10"
+                            >
+                                LOGIN
+                            </a>
+                        </div>
+                    )}
                 </div>
             </nav>
         </>

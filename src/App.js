@@ -7,7 +7,10 @@ import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
 
 import MainPage from "./Pages/MainPage";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 import DetailMobil from "./Pages/DetailMobil";
+import Profile from "./Pages/Profile";
+import Riwayat from "./Pages/Riwayat";
 
 function App() {
     return (
@@ -18,9 +21,12 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={MainPage} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/profile" component={Profile} />
+                        <Route exact path="/riwayat" component={Riwayat} />
                         <Route
                             exact
-                            path="/detailmobil"
+                            path="/detailmobil/:id"
                             component={DetailMobil}
                         />
                     </Switch>
