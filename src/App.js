@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import "./index.css";
 import { ReactDOM, useRef } from "react";
-import { EasybaseProvider, useEasybase } from "easybase-react";
 import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
 
 import MainPage from "./Pages/MainPage";
@@ -32,37 +31,31 @@ function App() {
                 widgetId="1gjhsgcvg"
                 ref={tawkMessengerRef}
             />
-            <EasybaseProvider>
-                <BrowserRouter>
-                    <Switch>
-                        <Route exact path="/" component={MainPage} />
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/profile" component={Profile} />
-                        <Route
-                            exact
-                            path="/tentangkami"
-                            component={TentangKami}
-                        />
-                        <Route exact path="/riwayat" component={Riwayat} />
-                        <Route
-                            exact
-                            path="/pembayaran/:id"
-                            component={Pembayaran}
-                        />
-                        <Route
-                            exact
-                            path="/persyaratan/:id"
-                            component={Persyaratan}
-                        />
-                        <Route
-                            exact
-                            path="/detailmobil/:id"
-                            component={DetailMobil}
-                        />
-                    </Switch>
-                </BrowserRouter>
-            </EasybaseProvider>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={MainPage} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/profile" component={Profile} />
+                    <Route exact path="/tentangkami" component={TentangKami} />
+                    <Route exact path="/riwayat" component={Riwayat} />
+                    <Route
+                        exact
+                        path="/pembayaran/:id"
+                        component={Pembayaran}
+                    />
+                    <Route
+                        exact
+                        path="/persyaratan/:id"
+                        component={Persyaratan}
+                    />
+                    <Route
+                        exact
+                        path="/detailmobil/:id"
+                        component={DetailMobil}
+                    />
+                </Switch>
+            </BrowserRouter>
         </div>
     );
 }

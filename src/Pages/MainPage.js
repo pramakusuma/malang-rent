@@ -9,8 +9,6 @@ import Footer from "../Components/Footer";
 import Mobil from "./Mobil";
 import car from "../image/car.png";
 
-import TawkTo from "tawkto-react";
-
 function MainPage() {
     // const [user, loading, error] = useAuthState(auth);
     // const [name, setName] = useState("");

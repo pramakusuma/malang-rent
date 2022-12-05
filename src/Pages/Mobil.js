@@ -130,7 +130,7 @@ export default function Mobil() {
                     <span>
                         Collection:{" "}
                         {carLists.docs.map((doc) => (
-                            <SwiperSlide>
+                            <SwiperSlide key={doc.id}>
                                 <div key={doc.id}>
                                     <a id={doc.id} onClick={selectedCar}>
                                         <MobilCard
