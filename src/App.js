@@ -11,6 +11,7 @@ import Register from "./Pages/Register";
 import DetailMobil from "./Pages/DetailMobil";
 import Profile from "./Pages/Profile";
 import Riwayat from "./Pages/Riwayat";
+import Pembayaran from "./Pages/Pembayaran";
 
 function App() {
     return (
@@ -24,6 +25,11 @@ function App() {
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/riwayat" component={Riwayat} />
+                        <Route
+                            exact
+                            path="/pembayaran"
+                            component={Pembayaran}
+                        />
                         <Route
                             exact
                             path="/detailmobil/:id"

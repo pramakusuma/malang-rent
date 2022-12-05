@@ -28,7 +28,7 @@ export default function Navbar({ fixed }) {
     };
     useEffect(() => {
         if (loading) return;
-        // if (!user) return navigate.push("/");
+        if (!user) return navigate.push("/");
         fetchUserName();
     }, [user, loading]);
 
@@ -93,7 +93,7 @@ export default function Navbar({ fixed }) {
                 >
                     <div className="text-lg font-black lg:flex lg:flex-grow lg:justify-end">
                         <a
-                            href="#mobil"
+                            href="/#mobil"
                             className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black lg:mr-6"
                         >
                             MOBIL

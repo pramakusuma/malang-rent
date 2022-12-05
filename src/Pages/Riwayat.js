@@ -10,7 +10,72 @@ export default function Riwayat() {
                     <h1 className="font-black text-4xl text-left mb-10">
                         RIWAYAT
                     </h1>
-                    <table className="border border-spacing-1 p-3 table-auto">
+
+                    <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-gray-500 ">
+                            <thead class="text-xs text-black uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="py-3 px-6">
+                                        Mobil
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Harga
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Pengambilan
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Pengembalian
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        <span class="sr-only">Edit</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b   hover:bg-gray-50 ">
+                                    <th
+                                        scope="row"
+                                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap "
+                                    >
+                                        Alphard
+                                    </th>
+                                    <td class="py-4 px-6">Rp. 400000</td>
+                                    <td class="py-4 px-6">5/12/2022</td>
+                                    <td class="py-4 px-6">7/12/2022</td>
+                                    <td class="py-4 px-6 text-right">
+                                        <a
+                                            href="#"
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                        >
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b   hover:bg-gray-50 ">
+                                    <th
+                                        scope="row"
+                                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap "
+                                    >
+                                        Avanza
+                                    </th>
+                                    <td class="py-4 px-6">Rp. 300000</td>
+                                    <td class="py-4 px-6">5/12/2022</td>
+                                    <td class="py-4 px-6">7/12/2022</td>
+                                    <td class="py-4 px-6 text-right">
+                                        <a
+                                            href="#"
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                        >
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {/* <table className="border border-spacing-1 p-3 table-auto">
                         <thead className="border mb-5">
                             <tr>
                                 <th className="p-5">Mobil</th>
@@ -30,7 +95,7 @@ export default function Riwayat() {
                                 <td>Rp. 400000</td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> */}
                 </div>
             </div>
             <Footer />
