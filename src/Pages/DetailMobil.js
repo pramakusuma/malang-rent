@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { auth, db, logout } from "../firebase.js";
+import { auth, db, logout, addOrder } from "../firebase.js";
 import { doc, getDoc } from "firebase/firestore";
-import { query, collection, getDocs, where } from "firebase/firestore";
+import {
+    query,
+    collection,
+    getDocs,
+    updateDoc,
+    where,
+} from "firebase/firestore";
+import moment from "moment";
 
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -17,14 +24,42 @@ export default function DetailMobil() {
     const { id } = useParams();
     // console.log(id);
 
+    const navigate = useHistory();
+
     const getCarDetail = async () => {
         const cars = collection(db, "cars");
         const carSnapshot = await getDocs(cars);
         const car = carSnapshot.docs[id - 1].data();
         setCarDetail(car);
     };
+    const selisih = moment(dateKembali).diff(moment(dateAmbil), "days");
+    const total = carDetail?.harga * selisih;
+
+    const sendPayment = () => {
+        var ambil = moment(dateAmbil);
+        var kembali = moment(dateKembali);
+        var selisih = kembali.diff(ambil, "days");
+        console.log(kembali.diff(ambil, "days"));
+        console.log(ambil.format("DD-MM-YYYY"));
+        addOrder(
+            carDetail?.name,
+            total,
+            ambil.format("DD-MM-YYYY"),
+            kembali.format("DD-MM-YYYY"),
+            false
+        );
+
+        var stokAwal = carDetail?.stok;
+        const updatedStok = doc(db, "cars", id);
+        updateDoc(updatedStok, {
+            stok: stokAwal - 1,
+        });
+        navigate.push("/riwayat");
+    };
+
     useEffect(() => {
         getCarDetail();
+        // sendPayment();
         // console.log(carDetail);
     });
     return (
@@ -81,9 +116,13 @@ export default function DetailMobil() {
                                 <p className="text-[#895BB3]">Kembali</p>
                             </div>
                             <h1 className="font-black w-100 text-lg text-left">
-                                Harga Penyewaan : Rp. {carDetail?.harga}
+                                Harga Penyewaan : Rp. {carDetail?.harga} x{" "}
+                                {selisih} = {total}
                             </h1>
-                            <button className="border-2 border-[#895BB3] bg-[#895BB3] rounded-lg text-white font-semibold text-xl w-32 p-1 my-5 hover:bg-transparent hover:text-[#895BB3]">
+                            <button
+                                onClick={sendPayment}
+                                className="border-2 border-[#895BB3] bg-[#895BB3] rounded-lg text-white font-semibold text-xl w-32 p-1 my-5 hover:bg-transparent hover:text-[#895BB3]"
+                            >
                                 KIRIM
                             </button>
                         </div>

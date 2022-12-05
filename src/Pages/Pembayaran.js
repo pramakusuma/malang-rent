@@ -1,7 +1,34 @@
+import { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { auth, db, logout } from "../firebase.js";
+import {
+    query,
+    collection,
+    getDocs,
+    where,
+    doc,
+    updateDoc,
+} from "firebase/firestore";
+
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 
 export default function Pembayaran() {
+    const [file, setFile] = useState("");
+    const { id } = useParams();
+    const navigate = useHistory();
+    const payment = () => {
+        if (file == "") {
+        } else {
+            console.log(id);
+            const updatedOrder = doc(db, "orders", id);
+            updateDoc(updatedOrder, {
+                status: true,
+            });
+            navigate.push("/");
+            console.log(file);
+        }
+    };
     return (
         <>
             <Navbar />
@@ -74,12 +101,15 @@ export default function Pembayaran() {
                                         id="dropzone-file"
                                         type="file"
                                         class="hidden"
-                                        value=""
+                                        value={file}
+                                        onChange={(e) =>
+                                            setFile(e.target.value)
+                                        }
                                     />
                                 </label>
                             </div>
                             <button
-                                onClick=""
+                                onClick={payment}
                                 className="border-2 border-[#895BB3] bg-[#895BB3] rounded-lg text-white font-semibold text-xl w-32 p-1 my-5 hover:bg-transparent hover:text-[#895BB3]"
                             >
                                 KIRIM

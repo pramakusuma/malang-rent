@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.77ecf815.css",
-    "main.js": "/static/js/main.470da5bf.js",
+    "main.css": "/static/css/main.bfc5b980.css",
+    "main.js": "/static/js/main.b23bbacb.js",
     "static/js/404.3eb7c963.chunk.js": "/static/js/404.3eb7c963.chunk.js",
     "static/js/391.a4acf9f6.chunk.js": "/static/js/391.a4acf9f6.chunk.js",
     "static/js/133.b01411e2.chunk.js": "/static/js/133.b01411e2.chunk.js",
@@ -19,13 +19,15 @@
     "static/media/pajero.webp": "/static/media/pajero.2263b96637f9578e920b.webp",
     "static/media/avanza.webp": "/static/media/avanza.9ba91f7a318e64e822c5.webp",
     "static/media/alphard.webp": "/static/media/alphard.77dbd004d5a7f22e13ce.webp",
+    "static/media/about.png": "/static/media/about.163dc5fdd3bcd549efcb.png",
     "static/media/car.png": "/static/media/car.1486ff134ef4e7386543.png",
     "static/media/logo.png": "/static/media/logo.7bd0a0242741390b3cc2.png",
     "static/media/profile.png": "/static/media/profile.e80cd07ef9195539352a.png",
+    "static/media/about-logo.png": "/static/media/about-logo.40ea5f34685119b3124f.png",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.77ecf815.css.map": "/static/css/main.77ecf815.css.map",
-    "main.470da5bf.js.map": "/static/js/main.470da5bf.js.map",
+    "main.bfc5b980.css.map": "/static/css/main.bfc5b980.css.map",
+    "main.b23bbacb.js.map": "/static/js/main.b23bbacb.js.map",
     "404.3eb7c963.chunk.js.map": "/static/js/404.3eb7c963.chunk.js.map",
     "391.a4acf9f6.chunk.js.map": "/static/js/391.a4acf9f6.chunk.js.map",
     "133.b01411e2.chunk.js.map": "/static/js/133.b01411e2.chunk.js.map",
@@ -40,7 +42,7 @@
     "570.6fdee43b.chunk.js.map": "/static/js/570.6fdee43b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.77ecf815.css",
-    "static/js/main.470da5bf.js"
+    "static/css/main.bfc5b980.css",
+    "static/js/main.b23bbacb.js"
   ]
 }

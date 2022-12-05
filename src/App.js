@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import "./index.css";
-import { ReactDOM } from "react";
+import { ReactDOM, useRef } from "react";
 import { EasybaseProvider, useEasybase } from "easybase-react";
 import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
 
@@ -12,11 +12,26 @@ import DetailMobil from "./Pages/DetailMobil";
 import Profile from "./Pages/Profile";
 import Riwayat from "./Pages/Riwayat";
 import Pembayaran from "./Pages/Pembayaran";
+import Persyaratan from "./Pages/Persyaratan";
+import TentangKami from "./Pages/TentangKami";
+
+import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
 function App() {
+    const tawkMessengerRef = useRef();
+
+    const handleMinimize = () => {
+        tawkMessengerRef.current.minimize();
+    };
     return (
         <div className="App">
+            <button onClick={handleMinimize}> Minimize the Chat </button>
             {/* <MainPage /> */}
+            <TawkMessengerReact
+                propertyId="638e47bab0d6371309d2c267"
+                widgetId="1gjhsgcvg"
+                ref={tawkMessengerRef}
+            />
             <EasybaseProvider>
                 <BrowserRouter>
                     <Switch>
@@ -24,11 +39,21 @@ function App() {
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/profile" component={Profile} />
+                        <Route
+                            exact
+                            path="/tentangkami"
+                            component={TentangKami}
+                        />
                         <Route exact path="/riwayat" component={Riwayat} />
                         <Route
                             exact
-                            path="/pembayaran"
+                            path="/pembayaran/:id"
                             component={Pembayaran}
+                        />
+                        <Route
+                            exact
+                            path="/persyaratan/:id"
+                            component={Persyaratan}
                         />
                         <Route
                             exact

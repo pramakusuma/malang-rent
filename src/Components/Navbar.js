@@ -93,6 +93,12 @@ export default function Navbar({ fixed }) {
                 >
                     <div className="text-lg font-black lg:flex lg:flex-grow lg:justify-end">
                         <a
+                            href="/tentangkami"
+                            className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black lg:mr-6"
+                        >
+                            TENTANG KAMI
+                        </a>
+                        <a
                             href="/#mobil"
                             className="block mt-4 text-center lg:inline-block lg:mt-0 text-black hover:text-black lg:mr-6"
                         >

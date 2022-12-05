@@ -99,6 +99,23 @@ const logout = () => {
     signOut(auth);
 };
 
+const addOrder = async (mobil, harga, ambil, kembali, status) => {
+    try {
+        // const res = await createUserWithEmailAndPassword(auth, email, password);
+        // const user = res.user;
+        await addDoc(collection(db, "orders"), {
+            mobil,
+            harga,
+            ambil,
+            kembali,
+            status,
+        });
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
 export {
     auth,
     db,
@@ -108,4 +125,5 @@ export {
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
+    addOrder,
 };
